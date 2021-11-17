@@ -81,6 +81,8 @@ When considering about autonomous vehicles it is very important to recognize tra
         * `training accuracy = 99.18%`
         * `training accuracy = 99.91`
 
+* *You can download the pre-trained model [here](https://github.com/AvishkaSandeepa/Traffic-Signs-Recognition/tree/master/main/Trained)*
+
 
 -----------------------------------------------------
 
