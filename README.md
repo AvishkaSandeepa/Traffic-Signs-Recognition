@@ -50,3 +50,43 @@ When considering about autonomous vehicles it is very important to recognize tra
 
 
 > ***Dataset - [kaggle](https://www.kaggle.com/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign)***
+
+------------------------------------------
+
+> ***Steps***
+
+* Since data set has several sizes, it will be difficult when model training.
+* Therefore as 1st step resize the whole dataset to `32 x 32 x 3`
+* Then convert above created list into `numpy arrays` that helps to model to training
+* After splitting the data set as training and testing check the shape of the data sets.
+    * `train_x.shape (26270, 32, 32, 3)`
+    * `validation_x.shape (12939, 32, 32, 3)`
+    * `train_y.shape (26270,)`
+    * `vallidation_y.shape (12939,)`
+
+* Since we consider 43 classes and both train and validation y is 1D array, we have to reshape by using encoding
+    * `train_y = tf.keras.utils.to_categorical(train_y, num_classes=num_classes)`
+    * `val_y = tf.keras.utils.to_categorical(val_y, num_classes=num_classes)`
+    *  *This function returns a matrix of binary values (either ‘1’ or ‘0’). It has number of rows equal to the length of the input vector and number of columns equal to the number of classes.*
+    *  After that, the shapes are,
+        * `train_y.shape (26270, 43)`
+        * `val_y.shape (12939, 43)`
+
+* Image data Augmentation is done.
+* Build the model as follows,
+    * Use `convolutional layers`, `Maxpooling`, `Dropout`, `Flatten`, `Dense`. You can refer [model training](https://github.com/AvishkaSandeepa/Traffic-Signs-Recognition/blob/master/main/codes/model-trainig.ipynb) python code for further details.
+    * That model gives the very high accuracies and low losses
+        * `training loss = 3.17%`
+        * `Validation loss = 0.40%`
+        * `training accuracy = 99.18%`
+        * `training accuracy = 99.91`
+
+
+-----------------------------------------------------
+
+> ***Resultant Graphs***
+
+* Graph of the training results,
+
+<img src="https://github.com/AvishkaSandeepa/Traffic-Signs-Recognition/blob/master/main/codes/losses-accuracies.png" alt="Accuracies and Losses" style="width:1000px;"/>
+
